@@ -1,4 +1,5 @@
 import { saveAs } from "file-saver";
+import "../style.css";
 function DownloadVcard(props) {
   function handleClick() {
     var vCardsJS = require("vcards-js");
@@ -18,6 +19,16 @@ function DownloadVcard(props) {
     });
     saveAs(blob, fileName);
   }
-  return <button onClick={handleClick}>Download Contact</button>;
+  return (
+    <button
+      className="DownloadVcard"
+      style={{
+        backgroundColor: props.profile.accent,
+      }}
+      onClick={handleClick}
+    >
+      Download Contact
+    </button>
+  );
 }
 export default DownloadVcard;

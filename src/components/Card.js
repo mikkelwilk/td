@@ -1,4 +1,6 @@
 import { Draggable } from "react-beautiful-dnd";
+import { MdDragHandle } from "react-icons/md";
+import "../style.css";
 function Card(props) {
   return (
     <Draggable
@@ -9,18 +11,19 @@ function Card(props) {
     >
       {(provided) => (
         <div
+          className="Card"
           {...provided.draggableProps}
-          {...provided.dragHandleProps}
           ref={provided.innerRef}
-          onClick={() =>
-            window.open(
-              props.platforms.find(({ pid }) => pid === props.card.pid).base +
-                props.card.value,
-              "_blank"
-            )
-          }
         >
-          <div>
+          <div
+            onClick={() =>
+              window.open(
+                props.platforms.find(({ pid }) => pid === props.card.pid).base +
+                  props.card.value,
+                "_blank"
+              )
+            }
+          >
             <h3>
               {props.platforms.find(({ pid }) => pid === props.card.pid).name}
             </h3>
@@ -30,6 +33,9 @@ function Card(props) {
                 props.platforms.find(({ pid }) => pid === props.card.pid).base}
               {props.card.value}
             </p>
+          </div>
+          <div {...provided.dragHandleProps}>
+            <MdDragHandle size="1.5em" />
           </div>
         </div>
       )}

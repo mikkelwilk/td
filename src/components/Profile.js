@@ -66,7 +66,7 @@ function Profile(props) {
     <>
       {cards && platforms && profile ? (
         <body>
-          <div id="nav">
+          <div className="Nav">
             {props.user ? (
               <button onClick={signOut}>LogOut</button>
             ) : (
@@ -83,13 +83,17 @@ function Profile(props) {
             )}
           </div>
           {profile && (
-            <img
-              src={profile.profilePhoto}
-              className="ProfilePhoto"
-              style={{
-                border: `5px solid ${profile.accent}`,
-              }}
-            />
+            <>
+              <img
+                src={profile.profilePhoto}
+                className="ProfilePhoto"
+                style={{
+                  border: `5px solid ${profile.accent}`,
+                }}
+              />
+              <h3>{profile.fullName}</h3>
+              <p>{profile.bio}</p>
+            </>
           )}
           <DownloadVcard profile={profile}>Download Contact</DownloadVcard>
           <CardList cards={cards} cardsUpdate={cardsUpdate}>
