@@ -8,7 +8,7 @@ import Profile from "./components/Profile";
 import Settings from "./components/Settings";
 
 function App() {
-  const [user, userUpdate] = useState(null);
+  const [user, userUpdate] = useState();
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {

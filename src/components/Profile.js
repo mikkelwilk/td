@@ -7,6 +7,7 @@ import DownloadVcard from "./DownloadVcard";
 import AddCard from "./AddCard";
 import { RiSettings4Fill } from "react-icons/ri";
 import "../style.css";
+import { isOwner } from "../functions";
 function Profile(props) {
   const { profileUrl } = useParams();
   const [profile, profileUpdate] = useState(false);
@@ -74,12 +75,10 @@ function Profile(props) {
                 <button>Login</button>
               </Link>
             )}
-            {props.user ? (
+            {props.user && isOwner(profile, props.user) && (
               <Link to="/settings">
                 <RiSettings4Fill color="#000000" size="1.5em" />
               </Link>
-            ) : (
-              ""
             )}
           </div>
           {profile && (

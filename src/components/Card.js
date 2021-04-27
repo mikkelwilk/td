@@ -1,6 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 import { MdDragHandle } from "react-icons/md";
 import "../style.css";
+import { isOwner } from "../functions";
 function Card(props) {
   return (
     <Draggable
@@ -34,9 +35,11 @@ function Card(props) {
               {props.card.value}
             </p>
           </div>
-          <div {...provided.dragHandleProps}>
-            <MdDragHandle size="1.5em" />
-          </div>
+          {isOwner(props.profile, props.user) && (
+            <div {...provided.dragHandleProps}>
+              <MdDragHandle size="1.5em" />
+            </div>
+          )}
         </div>
       )}
     </Draggable>
