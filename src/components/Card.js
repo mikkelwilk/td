@@ -16,38 +16,34 @@ function Card(props) {
           {...provided.draggableProps}
           ref={provided.innerRef}
         >
-          <div className="CardContentContainer">
-            <img
-              className="CardIcon"
-              src={
-                props.platforms.find(({ pid }) => pid === props.card.pid).icon
-              }
-            />
-            <div
-              className="CardTextContainer"
-              onClick={() =>
-                window.open(
-                  props.platforms.find(({ pid }) => pid === props.card.pid)
-                    .base + props.card.value,
-                  "_blank"
-                )
-              }
-            >
-              <h3>
-                {props.platforms.find(({ pid }) => pid === props.card.pid).name}
-              </h3>
-              <p className="CardUrl">
-                {props.platforms.find(({ pid }) => pid === props.card.pid)
-                  .useBase &&
-                  props.platforms
-                    .find(({ pid }) => pid === props.card.pid)
-                    .base.replace(/(^\w+:|^)\/\//, "")}
-                {props.card.value.replace(/(^\w+:|^)\/\//, "")}
-              </p>
-            </div>
+          <img
+            className="CardIcon"
+            src={props.platforms.find(({ pid }) => pid === props.card.pid).icon}
+          />
+          <div
+            className="CardContentContainer"
+            onClick={() =>
+              window.open(
+                props.platforms.find(({ pid }) => pid === props.card.pid).base +
+                  props.card.value,
+                "_blank"
+              )
+            }
+          >
+            <h3>
+              {props.platforms.find(({ pid }) => pid === props.card.pid).name}
+            </h3>
+            <p className="CardUrl">
+              {props.platforms.find(({ pid }) => pid === props.card.pid)
+                .useBase &&
+                props.platforms
+                  .find(({ pid }) => pid === props.card.pid)
+                  .base.replace(/(^\w+:|^)\/\//, "")}
+              {props.card.value.replace(/(^\w+:|^)\/\//, "")}
+            </p>
           </div>
           {isOwner(props.profile, props.user) && (
-            <div {...provided.dragHandleProps}>
+            <div className="CardDrag" {...provided.dragHandleProps}>
               <MdDragHandle size="2em" />
             </div>
           )}
