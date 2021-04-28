@@ -21,7 +21,30 @@ body {
   justify-content: space-between;
 }
 .Card {
+  max-width: 400px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.CardIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 22.5%;
+  margin-right: 20px;
+}
+.CardContentContainer {
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.CardUrl {
+  font-size: 14px;
+  overflow: hidden;
+}
+.CardTextContainer {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
 }
